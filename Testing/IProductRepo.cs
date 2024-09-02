@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Testing.Models;
 
@@ -11,5 +12,11 @@ namespace Testing
         public Product GetProduct(int id);
         
         void UpdateProduct(Product product);
+
+        public void InsertProduct(Product productToInsert);
+
+        public IEnumerable<Category> GetCategories();
+
+        public Product AssignCategory();
     }
 }
