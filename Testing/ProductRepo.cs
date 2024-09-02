@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Testing.Models;
 
 namespace Testing
@@ -27,6 +28,12 @@ namespace Testing
             var product = _connection.QuerySingle<Product>("SELECT * FROM PRODUCTS WHERE ProductID = @id", new { id = id });
 
             return product; 
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _connection.Execute("UPDATE products SET Name = @name, Price = @price WHERE ProductID = @id",
+                new { name = product.Name, price = product.Price, id = product.ProductID });
         }
     }
 }
